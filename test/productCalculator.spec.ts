@@ -8,9 +8,9 @@ import ProductCalculator from '../src/services/productCalculator';
 
 describe('ProductCalculator', function() {    
   describe('#Calculate()', function() {
-    var data: models.Product[];
+    var products: models.Product[];
     beforeEach(()=>{
-        data = [
+        products = [
             { Id: 1, Cost: 1, Revenue: 11, SellPrice: 21 },
             { Id: 2, Cost: 2, Revenue: 12, SellPrice: 22 },
             { Id: 3, Cost: 3, Revenue: 13, SellPrice: 23 },
@@ -29,7 +29,7 @@ describe('ProductCalculator', function() {
       var expected = [6, 15, 24, 21];
 
       var calculator = new ProductCalculator();
-      var actual = calculator.Calculate(data, 3, (p)=> p.Cost);
+      var actual = calculator.Calculate(products, 3, (p)=> p.Cost);
 
       chai.assert.sameMembers(expected, actual);
     });
@@ -38,7 +38,7 @@ describe('ProductCalculator', function() {
       var expected = [50, 66, 60];
 
       var calculator = new ProductCalculator();
-      var actual = calculator.Calculate(data, 4, (p)=> p.Revenue);
+      var actual = calculator.Calculate(products, 4, (p)=> p.Revenue);
 
       chai.assert.sameMembers(expected, actual);
     });
